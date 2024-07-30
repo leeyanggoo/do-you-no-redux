@@ -1,0 +1,22 @@
+import {
+  ACTION_TYPE_ADD_TODO,
+  ACTION_TYPE_REMOVE_ALL,
+  ACTION_TYPE_REMOVE_TODO,
+} from '../actions';
+import {
+  ACTION_DUCK_TYPE_ADD_TODO,
+  ACTION_DUCK_TYPE_REMOVE_ALL,
+  ACTION_DUCK_TYPE_REMOVE_TODO,
+} from '../ducks/todoDuck';
+
+export type TODO_ACTION_VALUE = string;
+
+export type TODO_ACTION_TYPE =
+  | typeof ACTION_TYPE_ADD_TODO
+  | typeof ACTION_TYPE_REMOVE_TODO
+  | typeof ACTION_TYPE_REMOVE_ALL;
+
+export type TODO_ACTION_DUCK_TYPE =
+  | typeof ACTION_DUCK_TYPE_ADD_TODO
+  | typeof ACTION_DUCK_TYPE_REMOVE_TODO
+  | typeof ACTION_DUCK_TYPE_REMOVE_ALL;
