@@ -1,6 +1,7 @@
 import { applyMiddleware, compose, createStore } from 'redux';
 import rootReducer from './reducers';
-import asyncFunctionMiddleware from './middlewares/asyncFunctionMiddleware';
+// import asyncFunctionMiddleware from './middlewares/asyncFunctionMiddleware';
+import { thunk } from 'redux-thunk';
 
 /**
  * 브라우저 확장 프로그램에 REDUX_DEVTOOLS가 설치되어 있으면 DEVTOOLS의 compose 실행
@@ -11,7 +12,8 @@ const composeEnhancers =
 
 const store = createStore(
   rootReducer,
-  composeEnhancers(applyMiddleware(asyncFunctionMiddleware))
+  composeEnhancers(applyMiddleware(thunk))
 );
 
+export type RootState = ReturnType<typeof rootReducer>;
 export default store;

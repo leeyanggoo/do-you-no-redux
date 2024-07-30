@@ -20,6 +20,7 @@ import {
 } from '../actions/todoAction';
 
 import TodoApp from '../../components/TodoApp';
+import addTodoThunkActionCreator from '../thunks/addTodoThunk';
 
 const mapStateToProps = (state: any, ownProps: any) => {
   return { todoItems: state.todo };
@@ -27,7 +28,8 @@ const mapStateToProps = (state: any, ownProps: any) => {
 const mapDispatchToProps = (dispatch: any, ownProps: any) => {
   return {
     addTodo: (text: TODO_ACTION_VALUE) => {
-      dispatch(addTodoActionCreator(text));
+      // dispatch(addTodoActionCreator(text));
+      dispatch(addTodoThunkActionCreator(text));
     },
     removeTodo: () => {
       dispatch(removeTodoActionCreator());
