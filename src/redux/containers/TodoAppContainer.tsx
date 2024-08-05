@@ -21,9 +21,11 @@ import {
 
 import TodoApp from '../../components/TodoApp';
 import addTodoThunkActionCreator from '../thunks/addTodoThunk';
+import { fetchTodosRequested as fetchTodosRequestedCreator } from '../actions/fetchTodosAction';
+import { RootState } from '../store';
 
-const mapStateToProps = (state: any, ownProps: any) => {
-  return { todoItems: state.todo };
+const mapStateToProps = (state: RootState, ownProps: any) => {
+  return { todoItems: [...state.todo, ...state.fetchTodos.data] };
 };
 const mapDispatchToProps = (dispatch: any, ownProps: any) => {
   return {
@@ -38,6 +40,7 @@ const mapDispatchToProps = (dispatch: any, ownProps: any) => {
       dispatch(removeAllActionCreator());
     },
     triggerAsyncFunction: (asyncFunction: Function) => dispatch(asyncFunction),
+    fetchTodo: () => dispatch(fetchTodosRequestedCreator()),
   };
 };
 

@@ -8,11 +8,18 @@ interface TodoAppProps {
   removeTodo: () => void;
   removeAll: () => void;
   triggerAsyncFunction: (asyncFunction: Function) => any;
+  fetchTodo: () => void;
 }
 
 const TodoApp: React.FC<TodoAppProps> = props => {
-  const { todoItems, addTodo, removeTodo, removeAll, triggerAsyncFunction } =
-    props;
+  const {
+    todoItems,
+    addTodo,
+    removeTodo,
+    removeAll,
+    triggerAsyncFunction,
+    fetchTodo,
+  } = props;
 
   const [newTodo, setNewTodo] = React.useState('');
 
@@ -61,6 +68,8 @@ const TodoApp: React.FC<TodoAppProps> = props => {
         >
           트리거
         </button>
+
+        <button onClick={() => fetchTodo()}>바다오기</button>
       </div>
     </div>
   );
