@@ -5,9 +5,10 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 //
 import { Provider } from 'react-redux';
-import store from './redux/store';
+import store, { persistor } from './redux/store';
 import TodoApp from './components/TodoApp';
 import TodoAppContainer from './redux/containers/TodoAppContainer';
+import { PersistGate } from 'redux-persist/integration/react';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -15,7 +16,13 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <TodoAppContainer />
+      <PersistGate
+        persistor={persistor}
+        loading={<h1>기다리셈</h1>}
+      >
+        {/* <TodoAppContainer /> */}
+        <TodoApp />
+      </PersistGate>
     </Provider>
   </React.StrictMode>
 );
